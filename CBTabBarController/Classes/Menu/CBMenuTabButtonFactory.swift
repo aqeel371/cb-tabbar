@@ -24,6 +24,7 @@ class CBMenuTabButtonFactory: CBTabButtonFactory {
             menuItem.image = menu.icon ?? UIImage(named: "btnMenu", in: Bundle.resourseBundle, compatibleWith: nil)
             menuItem.tintColor = menu.menuColor
             let button = CBMenuButton(item: menuItem)
+            button.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
             let presenter = CBMenuPresenter(menu: menu)
             button.presenter = presenter
             presenter.menuButton = button

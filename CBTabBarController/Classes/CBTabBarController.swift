@@ -15,6 +15,7 @@ open class CBTabBarController: UITabBarController {
     public var style: CBTabBarStyle = .fade {
         didSet {
             updateTabBarStyle()
+            setupMiddleButton()
         }
     }
 
@@ -58,6 +59,7 @@ open class CBTabBarController: UITabBarController {
             tabBar.barTintColor = barTint
         }
         self.setValue(tabBar, forKey: "tabBar")
+        setupMiddleButton()
     }
     
     private func updateTabBarStyle() {
@@ -102,11 +104,28 @@ open class CBTabBarController: UITabBarController {
         tabFrame.origin.y = self.view.frame.size.height - tabFrame.size.height
         tabBar.frame = tabFrame
         tabBar.setNeedsLayout()
+        setupMiddleButton()
     }
     
     @available(iOS 11.0, *)
     open override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         updateTabBarFrame()
+        setupMiddleButton()
+    }
+    func setupMiddleButton() {
+        var middleBtn: CBMenuButton?
+        if let tb = self.tabBar as? CBTabBar{
+            tb.buttons.forEach{ item in
+                if let menu = item as? CBMenuButton{
+                    middleBtn = menu
+                    middleBtn?.frame = CGRect(x: (UIScreen.main.bounds.width / 2)-25, y: UIScreen.main.bounds.height - 120, width: 50, height: 50)
+                }
+            }
+        }
+        if let middleBtn = middleBtn{
+            self.view.addSubview(middleBtn)
+        }
+        self.view.layoutIfNeeded()
     }
 }

@@ -45,8 +45,10 @@ class CBMenuPresenter: NSObject {
         presentAnimationController = CBMenuPresentAnimationController()
         presentAnimationController?.menuButton = menuButton
         presentAnimationController?.maxOffset = maxOffset
+        presentAnimationController?.fromView = self.presentationController?.view
         dismissAnimationController = CBMenuDismissAnimationController()
         dismissAnimationController?.menuButton = menuButton
+        dismissAnimationController?.toView = self.presentationController?.view
     }
     
     @objc func menuBtnPan(sender: UIPanGestureRecognizer) {

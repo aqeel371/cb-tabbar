@@ -15,7 +15,7 @@ class CBMenuPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
     private let duration: Double = 0.5
     private var interactiveContext: UIViewControllerContextTransitioning?
     private var transitionContext: UIViewControllerContextTransitioning?
-    private var fromView: UIView?
+    public var fromView: UIView?
     private var toView: UIView?
     private var toViewController: CBMenuController?
     private var displayLink: CADisplayLink?
@@ -34,7 +34,7 @@ class CBMenuPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
     }
     
     private func startTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.view(forKey: .from) else { return }
+        guard let fromView = self.fromView else { return }
         guard let toView = transitionContext.view(forKey: .to) else { return }
         toViewController = transitionContext.viewController(forKey: .to) as? CBMenuController
         self.fromView = fromView

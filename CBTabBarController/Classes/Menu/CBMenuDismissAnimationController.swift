@@ -12,6 +12,7 @@ class CBMenuDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
     
     private let duration: Double = 0.25
     weak var menuButton: UIView?
+    public var toView: UIView?
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
@@ -19,7 +20,7 @@ class CBMenuDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromView = transitionContext.view(forKey: .from),
-            let toView = transitionContext.view(forKey: .to) else { return }
+              let toView = self.toView else { return }
         
         let fromViewController = transitionContext.viewController(forKey: .from) as? CBMenuController
         let container = transitionContext.containerView

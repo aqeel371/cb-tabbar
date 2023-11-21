@@ -10,7 +10,7 @@ import UIKit
 
 class CBMenuButton: CBBaseTabButton {
     
-    private let btnSize: CGFloat = 60.0
+    private let btnSize: CGFloat = 50.0
     private let tabImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .center
@@ -43,6 +43,7 @@ class CBMenuButton: CBBaseTabButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         bgView.center = CGPoint(x: bounds.midX, y: bounds.midY)
+//        bgView.transform = CGAffineTransform(translationX: 0, y: -30)
         tabImage.frame = bgView.frame
     }
     
