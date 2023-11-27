@@ -66,7 +66,7 @@ class ViewController: UIViewController {
                                 })
         })
         tabBarController.style = .gooey(menu: menu)
-            
+        (tabBarController.tabBar as? CBTabBar)?.tabbarBackground = .red
         self.navigationController?.pushViewController(tabBarController, animated: true)
     }
 

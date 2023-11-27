@@ -11,7 +11,7 @@ import UIKit
 open class CBTabBar: UITabBar {
 
     var buttons: [CBTabBarButton] = []
-
+    open var tabbarBackground:UIColor = .blue
     fileprivate var shouldSelectOnTabBar = true
     var buttonFactory: CBTabButtonFactory? {
         didSet {
@@ -166,7 +166,7 @@ open class CBTabBar: UITabBar {
         pth.close()
         
         shapeLayer.path = pth.cgPath
-        shapeLayer.fillColor = self.backgroundColor?.cgColor
+        shapeLayer.fillColor = self.tabbarBackground.cgColor
         
     }
     override init(frame: CGRect) {
