@@ -31,7 +31,7 @@ public struct CBTabMenu {
     let menuButtonIndex: Int
     let menuColor: UIColor
     let items: [CBTabMenuItem]
-    let icon: UIImage?
+    public var icon: UIImage?
     let callback: (UIViewController, CBTabMenuItem) -> Void
     
     public init(menuButtonIndex: Int,

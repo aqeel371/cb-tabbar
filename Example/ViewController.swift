@@ -56,7 +56,7 @@ class ViewController: UIViewController {
     @IBAction func btnGooeyPressed(_ sender: AnyObject) {
         let tabBarController = createSampleTabController()
         let menuEntries = ["Reminder", "Camera", "Attachment", "Text Note"]
-        let menu = CBTabMenu(menuButtonIndex: 2,
+        var menu = CBTabMenu(menuButtonIndex: 2,
                              menuColor: #colorLiteral(red: 0.368781209, green: 0.6813176274, blue: 1, alpha: 1),
                              items: menuEntries,
                              icon: nil,
@@ -65,6 +65,7 @@ class ViewController: UIViewController {
                                     print("\(item) selected")
                                 })
         })
+        menu.icon = UIImage(named: "btnClose")
         tabBarController.style = .gooey(menu: menu)
         (tabBarController.tabBar as? CBTabBar)?.tabbarBackground = .red
         self.navigationController?.pushViewController(tabBarController, animated: true)
