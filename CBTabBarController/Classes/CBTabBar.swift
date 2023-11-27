@@ -166,7 +166,7 @@ open class CBTabBar: UITabBar {
         pth.close()
         
         shapeLayer.path = pth.cgPath
-        shapeLayer.fillColor = UIColor.systemBlue.cgColor
+        shapeLayer.fillColor = self.backgroundColor?.cgColor
         
     }
     override init(frame: CGRect) {
