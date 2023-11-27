@@ -38,6 +38,7 @@ class CBMenuPresenter: NSObject {
         presentInteractionController = nil
         menuController.loadViewIfNeeded()
         menuController.transitioningDelegate = self
+        menuController.modalPresentationStyle = .fullScreen
         presentationController?.present(menuController, animated: true, completion: nil)
     }
     
@@ -48,7 +49,7 @@ class CBMenuPresenter: NSObject {
         presentAnimationController?.fromView = self.presentationController?.view
         dismissAnimationController = CBMenuDismissAnimationController()
         dismissAnimationController?.menuButton = menuButton
-        dismissAnimationController?.toView = self.presentationController?.view
+        dismissAnimationController?.toView = UIView()
     }
     
     @objc func menuBtnPan(sender: UIPanGestureRecognizer) {
@@ -85,6 +86,7 @@ class CBMenuPresenter: NSObject {
         presentInteractionController = presentAnimationController
         menuController.loadViewIfNeeded()
         menuController.transitioningDelegate = self
+        menuController.modalPresentationStyle = .fullScreen
         presentationController?.present(menuController, animated: true, completion: nil)
     }
 
